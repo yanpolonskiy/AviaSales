@@ -1,0 +1,37 @@
+{
+    "name": "TestAviaSales",
+    "version": "0.0.0",
+    "description": "Test-task AviaSales for Fronted Developer",
+    "main": "index.js",
+    "author": "Yan Polonsky",
+    "license": "ISC",
+    "scripts": {
+        "wds": "webpack-dev-server --mode development --inline --hot --progress --open --display-error-details --build-target",
+        "dev": "npm run wds",
+        "build": "webpack --mode production"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "@babel/preset-env": "^7.1.0",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/plugin-proposal-class-properties": "^7.0.0",
+        "@babel/polyfill": "^7.0.0",
+        "babel-loader": "^8.0.0",
+        "css-loader": "^1.0.0",
+        "file-loader": "^2.0.0",
+        "less": "^3.8.1",
+        "less-loader": "^4.1.0",
+        "react-hot-loader": "^4.3.11",
+        "style-loader": "^0.23.1",
+        "url-loader": "^1.1.1",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "moment": "^2.22.2",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2"
+    }
+}

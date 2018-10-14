@@ -1,0 +1,35 @@
+.stops-filter {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-top: 28px;
+    max-height: 210px;
+    &__title {
+        margin-bottom: 15px;
+    }
+
+    &__checkboxes {
+        display: flex;
+        flex-direction: column;
+        &__checkbox {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media (max-width: 820px) {
+    .stops-filter {
+        margin-top: 20px;
+        flex: 1 0 50%;
+    }
+}
+
+@media (max-width: 565px) {
+    .stops-filter {
+        &__checkboxes {
+            .hidden-element {
+                display: none;
+            }
+        }
+    }
+}
