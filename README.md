@@ -3,6 +3,7 @@ Solution consists of two parts: webclient and server.
 Webclient takes tickets data from simple node server.
 
 To start the Application: 
+
 0) install npm, node
 1) download the project
 2) open server folder
