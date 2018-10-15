@@ -5,7 +5,6 @@ import TicketRightPart from './TicketRightPart/TicketRightPart';
 
 import './TicketListItem.less';
 
-
 export default class TicketListItem extends Component {
     render() {
         const { ticket, currency } = this.props;

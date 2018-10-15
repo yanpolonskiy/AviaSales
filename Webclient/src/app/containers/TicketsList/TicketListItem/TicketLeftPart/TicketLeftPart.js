@@ -5,12 +5,6 @@ import './TicketLeftPart.less';
 export default class TicketLeftPart extends Component {
     render() {
         const { carrier, currency, price } = this.props;
-        let displayPrice = price;
-        
-        if (currency.valuteCourse && currency.valuteCourse[currency.currentValute]) {
-            displayPrice = price / currency.valuteCourse[currency.currentValute].Value;
-            displayPrice = Math.round(displayPrice * 100) / 100;
-        }
 
         return (
             <div className="ticket-list-item__leftpart">
@@ -20,7 +14,7 @@ export default class TicketLeftPart extends Component {
                 <button className="ticket-list-item__leftpart__button">
                     <span>Купить</span>{' '}
                     <span>
-                        {displayPrice} ​{currency.symbol}
+                        {price} ​{currency.symbol}
                     </span>
                 </button>
             </div>

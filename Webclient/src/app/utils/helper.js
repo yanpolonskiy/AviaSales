@@ -1,5 +1,6 @@
 
 import moment from 'moment';
+import 'moment/locale/ru';
 
 class Helper {
 
@@ -8,17 +9,27 @@ class Helper {
     }
 
     firstLetterToUpperCase(str) {
-		return str.substr(0, 1).toUpperCase() + str.substr(1);
-	}
+        return str.substr(0, 1).toUpperCase() + str.substr(1);
+    }
 
+    /*  не отрабатывала функция - moment.updateLocale('ru', {
+            weekdaysShort : ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
+        }); 
+        причину искать времени, к сожалению, нет
+    */
 
-    ticketDateFormatter = date => {
-        moment.locale('ru');
-        const stringDate = moment(date, "DD.MM.YYYY");
-        let month = stringDate.format('MMM');
-        month = month.substring(0, month.length - 1);
-        let day = this.firstLetterToUpperCase(stringDate.format('dd'));
-        return `${stringDate.format('D')} ${month} ${stringDate.format('YYYY')}, ${day}`;
+    ticketDateFormatter = (date, time) => {
+        const parsedTime = time.split(':');
+        const fullDate = moment(date, 'DD.MM.YY');
+        fullDate.hours(parsedTime[0]);
+        fullDate.minutes(parsedTime[1]);
+        let month = fullDate.format('D MMM YYYY, ');
+        let day = this.firstLetterToUpperCase(fullDate.format('dd'));
+        return { date: month + day, time: fullDate.format('hh:mm') };
+    }
+
+    comparePrices = (ticket1, ticket2) => {
+        return ticket1.price - ticket2.price;
     }
 }
 

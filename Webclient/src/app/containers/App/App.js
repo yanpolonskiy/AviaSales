@@ -6,11 +6,11 @@ import withData from './DataProvider';
 import './App.less';
 
 export function App(props) {
-    const { 
-        stopsFilter, 
-        currency, 
-        tickets, 
-        checkboxHandler, 
+    const {
+        stopsFilter,
+        currency,
+        tickets,
+        checkboxHandler,
         headCheckboxHandler,
         currencyChangeHandler
     } = props;
@@ -29,8 +29,15 @@ export function App(props) {
 
 export class SearchApp extends React.Component {
     render() {
-        const { stopsFilter, currency, tickets, checkboxHandler, headCheckboxHandler, currencyChangeHandler} = this.props;
-        
+        const {
+            stopsFilter,
+            currency,
+            tickets,
+            checkboxHandler,
+            headCheckboxHandler,
+            currencyChangeHandler
+        } = this.props;
+
         return (
             <div className="app">
                 <div className="header">

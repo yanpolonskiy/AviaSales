@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './Checkbox.less';
 
 export default class Checkbox extends Component {
-
-
     render() {
         const { text, checked, hiddenText, value, checkboxHandler } = this.props;
         const className = this.props.className ? ' ' + this.props.className : '';

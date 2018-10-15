@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './RadioGroup.less';
 
-export default class RadioGroup extends Component {    
+export default class RadioGroup extends Component {
     render() {
         const { buttons, name, onChange, defaultChecked } = this.props;
         const className = this.props.className ? ' ' + this.props.className : '';
-       
+
         const elements = [];
         buttons.forEach((element, index) => {
             elements.push(
@@ -19,15 +19,20 @@ export default class RadioGroup extends Component {
                 />
             );
             elements.push(
-                <label htmlFor={name + '-option-' + index} key={'label-' + index} className="radio-label">
+                <label
+                    htmlFor={name + '-option-' + index}
+                    key={'label-' + index}
+                    className="radio-label">
                     {element}
                 </label>
             );
         });
 
         return (
-            <form className={"radio-form"  + className}>
-                <div className={"radio-group"} onChange={onChange}>{elements}</div>
+            <form className={'radio-form' + className}>
+                <div className={'radio-group'} onChange={onChange}>
+                    {elements}
+                </div>
             </form>
         );
     }

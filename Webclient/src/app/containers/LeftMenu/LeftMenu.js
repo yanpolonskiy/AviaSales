@@ -13,10 +13,10 @@ export default class LeftMenu extends Component {
             currencyChangeHandler,
             currency
         } = this.props;
-        
+
         return (
             <div className="left-menu">
-                <Currency currencyChangeHandler={currencyChangeHandler} currency={currency}/>
+                <Currency currencyChangeHandler={currencyChangeHandler} currency={currency} />
                 <StopsFilter
                     checkboxHandler={checkboxHandler}
                     headCheckboxHandler={headCheckboxHandler}
