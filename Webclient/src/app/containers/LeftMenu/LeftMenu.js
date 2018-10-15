@@ -16,7 +16,7 @@ export default class LeftMenu extends Component {
         
         return (
             <div className="left-menu">
-                <Currency currencyChangeHandler={currencyChangeHandler} defaultChecked={currency.currentValute}/>
+                <Currency currencyChangeHandler={currencyChangeHandler} currency={currency}/>
                 <StopsFilter
                     checkboxHandler={checkboxHandler}
                     headCheckboxHandler={headCheckboxHandler}

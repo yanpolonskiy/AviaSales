@@ -1,28 +1,6 @@
 import React from 'react';
-import api from 'app/api/api';
-
-const stopsFilters = [
-    {
-        value: 0,
-        isChecked: true,
-        name: 'Без пересадок'
-    },
-    {
-        value: 1,
-        isChecked: true,
-        name: '1 пересадка'
-    },
-    {
-        value: 2,
-        isChecked: true,
-        name: '2 пересадки'
-    },
-    {
-        value: 3,
-        isChecked: true,
-        name: '3 пересадки'
-    }
-];
+import api from 'app/api';
+import { STOPS_FILTERS, CURRENCY_SYMBOLS, CURRENCIES } from "app/constants/DataProvider";
 
 export default function(WrappedComponent) {
     return class DataProvider extends React.Component {
@@ -33,11 +11,13 @@ export default function(WrappedComponent) {
                 tickets: [],
                 stopsFilter: {
                     isAllChecked: true,
-                    filters: stopsFilters
+                    filters: STOPS_FILTERS
                 },
                 currency: {
                     currentValute: 'RUB',
-                    valuteCourse: {}
+                    valuteCourse: {},
+                    currencies: CURRENCIES,
+                    symbol: CURRENCY_SYMBOLS['RUB']
                 }
             };
         }
@@ -49,9 +29,9 @@ export default function(WrappedComponent) {
 
         getValuteCourse = async () => {
             try {
-                const { data } = await api.valuteApi.getValuteCourse();
+                const { data } = await api.valute.getValuteCourse();
                 this.setState({
-                    currency: { ...this.state.currency, valuteCourse: data }
+                    currency: { ...this.state.currency, valuteCourse: data.Valute }
                 });
             } catch (e) {
                 console.error(e);
@@ -60,7 +40,7 @@ export default function(WrappedComponent) {
 
         getTickets = async () => {
             try {
-                const { data } = await api.aviasalesApi.getTickets();
+                const { data } = await api.tickets.getTickets();
                 
                 this.setState({
                     tickets: data
@@ -71,21 +51,16 @@ export default function(WrappedComponent) {
         };
 
         currencyChangeHandler = e => {
+            const { value } = e.target;
             this.setState({
-                currency: { ...this.state.currency, currentValute: e.target.value }
+                currency: { ...this.state.currency, currentValute: value, symbol: CURRENCY_SYMBOLS[value] }
             });
         };
 
         checkboxHandler = (value, isOnly) => {
             const newFilters = this.state.stopsFilter.filters.map(filter => {
                 if (isOnly)
-                    return filter.value === value
-                        ? filter.isChecked
-                            ? filter
-                            : { ...filter, isChecked: true }
-                        : !filter.isChecked
-                            ? filter
-                            : { ...filter, isChecked: false };
+                    return { ...filter, isChecked: filter.value === value }
                 return filter.value != value ? filter : { ...filter, isChecked: !filter.isChecked };
             });
 
@@ -99,13 +74,7 @@ export default function(WrappedComponent) {
         };
 
         checkAllChecked = filters => {
-            let isAllChecked = true;
-            filters.forEach(item => {
-                if (!item.isChecked) {
-                    isAllChecked = false;
-                }
-            });
-            return isAllChecked;
+            return filters.every(item => item.isChecked);
         };
 
         headCheckboxHandler = () => {
@@ -115,9 +84,7 @@ export default function(WrappedComponent) {
                 ...stopsFilter,
                 isAllChecked: !stopsFilter.isAllChecked,
                 filters: stopsFilter.filters.map(filter => {
-                    if (stopsFilter.isAllChecked)
-                        return filter.isChecked ? { ...filter, isChecked: false } : filter;
-                    return !filter.isChecked ? { ...filter, isChecked: true } : filter;
+                    return { ...filter, isChecked: !(stopsFilter.isAllChecked && filter.isChecked) }
                 })
             };
 
@@ -130,7 +97,7 @@ export default function(WrappedComponent) {
             const { currency, stopsFilter } = this.state;
 
             const tickets = this.state.tickets.filter(ticket =>
-                stopsFilter.filters.find(
+                stopsFilter.filters.some(
                     filter => filter.value === ticket.stops && filter.isChecked
                 )
             );

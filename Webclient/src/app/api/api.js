@@ -1,7 +1,6 @@
 import axios from 'axios';
-const baseURL = 'http://127.0.0.1:9091';
 
-class Api {
+export default class Api {
     constructor(url) {
         this.url = url;
     }
@@ -31,13 +30,3 @@ class Api {
     };
 }
 
-class ValuteApi extends Api {
-    getValuteCourse = () => this.sendRequest('/daily_json.js', 'get', {});
-}
-
-class AviasalesApi extends Api {
-    getTickets = () => this.sendRequest('/Tickets', 'get', {});
-}
-
-const api = { valuteApi: new ValuteApi('https://www.cbr-xml-daily.ru/'), aviasalesApi: new AviasalesApi(baseURL) };
-export default api;

@@ -2,21 +2,16 @@ import React, { Component } from 'react';
 
 import './TicketLeftPart.less';
 
-const currencySymbol = {
-    RUB: '₽',
-    EUR: '€',
-    USD: '$ '
-};
-
 export default class TicketLeftPart extends Component {
     render() {
-        const { carrier, currency } = this.props;
-        let price = this.props.price;
+        const { carrier, currency, price } = this.props;
+        let displayPrice = price;
         
-        if (currency.valuteCourse.Valute && currency.valuteCourse.Valute[currency.currentValute]) {
-            price = price / currency.valuteCourse.Valute[currency.currentValute].Value;
-            price = Math.round(price * 100) / 100;
+        if (currency.valuteCourse && currency.valuteCourse[currency.currentValute]) {
+            displayPrice = price / currency.valuteCourse[currency.currentValute].Value;
+            displayPrice = Math.round(displayPrice * 100) / 100;
         }
+
         return (
             <div className="ticket-list-item__leftpart">
                 <div className="ticket-list-item__leftpart__logo">
@@ -25,7 +20,7 @@ export default class TicketLeftPart extends Component {
                 <button className="ticket-list-item__leftpart__button">
                     <span>Купить</span>{' '}
                     <span>
-                        {price} ​{currencySymbol[this.props.currency.currentValute] || '₽'}
+                        {displayPrice} ​{currency.symbol}
                     </span>
                 </button>
             </div>
