@@ -25,18 +25,18 @@ export default class TicketRightPart extends PureComponent {
         return (
             <div className="ticket-list-item__rightpart">
                 <div className="ticket-list-item__rightpart__travel">
-                    <span className="ticket-list-item__rightpart__travel--time">{departure_time}</span>
-                    <span className="ticket-list-item__rightpart__travel--city">{origin}, {origin_name}</span>
-                    <span className="ticket-list-item__rightpart__travel--date">{departureDate}</span>
+                    <div className="ticket-list-item__rightpart__travel--time"><span>{departure_time}</span></div>
+                    <div className="ticket-list-item__rightpart__travel--city"><span>{origin}, {origin_name}</span></div>
+                    <div className="ticket-list-item__rightpart__travel--date"><span>{departureDate}</span></div>
                 </div>
                 <div className="ticket-list-item__rightpart__stops">
-                    <span>{stopsCount}</span>
+                    <div>{stopsCount}</div>
                     <img className="ticket-list-item__rightpart__stops--plane" src="./img/plane.png"></img>
                 </div>
                 <div className="ticket-list-item__rightpart__travel arrival">
-                    <span className="ticket-list-item__rightpart__travel--time">{arrival_time}</span>
-                    <span className="ticket-list-item__rightpart__travel--city">{destination_name}, {destination}</span>
-                    <span className="ticket-list-item__rightpart__travel--date">{arrivalDate}</span>
+                    <div className="ticket-list-item__rightpart__travel--time"><span>{arrival_time}</span></div>
+                    <div className="ticket-list-item__rightpart__travel--city"><span>{destination_name}, {destination}</span></div>
+                    <div className="ticket-list-item__rightpart__travel--date"><span>{arrivalDate}</span></div>
                 </div>
             </div>
         );

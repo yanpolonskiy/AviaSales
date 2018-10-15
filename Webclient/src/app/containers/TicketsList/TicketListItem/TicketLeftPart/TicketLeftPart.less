@@ -1,21 +1,24 @@
 .ticket-list-item__leftpart {
-    flex: 1 0 1px;
     width: 200px;
     border-right: 1px solid #eceff1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    padding: 10px;
     &__logo {
         display: flex;
+        flex-grow: 0;
+        flex-basis: auto;
+        justify-content: center;
     }
     &__button {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: center;
         width: 160px;
-        flex: 0 1 56px;
+        flex: 0 0 56px;
         background: #ff6d00;
         border-radius: 5px;
         color: #ffffff;

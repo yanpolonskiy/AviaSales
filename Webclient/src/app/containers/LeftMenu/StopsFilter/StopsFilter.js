@@ -21,7 +21,7 @@ export default class StopsFilter extends Component {
         ));
         return (
             <div className="stops-filter">
-                <span className="stops-filter__title">КОЛИЧЕСТВО ПЕРЕСАДОК</span>
+                <div className="stops-filter__title"><span>КОЛИЧЕСТВО ПЕРЕСАДОК</span></div>
                 <div className="stops-filter__checkboxes">
                     <Checkbox
                         text="Всё"

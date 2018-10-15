@@ -49,12 +49,17 @@
 @media (max-width: 565px) {
     .ticket-list-item__rightpart  {
         flex-direction: column;
+        flex: 1 0 155px;
         height: auto;
-        align-items: flex-start;
+        align-items: center;
+        padding-top: 0;
         &__travel, &__stops {
-            &.arrival {
+            width: 105px;
+            align-items: center;
+            margin-top: 0;
+                &.arrival {
                 margin-left: 0;
-            }
+                }
         }
     }
 }
@@ -62,7 +67,8 @@
 @media (max-width: 355px) {
     .ticket-list-item__rightpart  {
         padding: 0;
-        flex: 1 0 250px;
+        flex: 1 0 200px;
+        justify-content: space-around;
         border-bottom: 1px solid #eceff1;
         &__travel, &__stops {
             align-items: center;
