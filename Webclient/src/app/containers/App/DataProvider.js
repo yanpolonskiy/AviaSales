@@ -46,13 +46,11 @@ export default function(WrappedComponent) {
 
         static getDerivedStateFromProps(nextProps, prevState) {
             const { tickets, stopsFilter, currency } = prevState;
-            const filteredTickets = tickets
-                .filter(ticket =>
+            const filteredTickets = tickets.filter(ticket =>
                     stopsFilter.filters.some(
                         filter => filter.value === ticket.stops && filter.isChecked
                     )
-                )
-                .map(ticket => {
+                ).map(ticket => {
                     if (currency.valuteCourse && currency.valuteCourse[currency.currentValute]) {
                         let price =
                             ticket.price / currency.valuteCourse[currency.currentValute].Value;
@@ -63,7 +61,6 @@ export default function(WrappedComponent) {
                 });
 
             return {
-                tickets: tickets.sort(helper.comparePrices),
                 filteredTickets
             };
         }
@@ -82,9 +79,9 @@ export default function(WrappedComponent) {
         getTickets = async () => {
             try {
                 const { data } = await api.tickets.getTickets();
-
+                const tickets = data.sort(helper.comparePrices);
                 this.setState({
-                    tickets: data
+                    tickets
                 });
             } catch (e) {
                 console.error(e);
