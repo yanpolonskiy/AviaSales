@@ -21,11 +21,11 @@ class Helper {
     ticketDateFormatter = (date, time) => {
         const parsedTime = time.split(':');
         const fullDate = moment(date, 'DD.MM.YY');
-        fullDate.hours(parsedTime[0]);
-        fullDate.minutes(parsedTime[1]);
+        fullDate.hour(parsedTime[0]);
+        fullDate.minute(parsedTime[1]);
         let month = fullDate.format('D MMM YYYY, ');
         let day = this.firstLetterToUpperCase(fullDate.format('dd'));
-        return { date: month + day, time: fullDate.format('hh:mm') };
+        return { date: month + day, time: fullDate.format('HH:mm') };
     }
 
     comparePrices = (ticket1, ticket2) => {

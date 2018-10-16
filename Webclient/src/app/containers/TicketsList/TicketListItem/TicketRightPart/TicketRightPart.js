@@ -21,7 +21,7 @@ export default class TicketRightPart extends PureComponent {
         const stopsCount = stops === 0 ? '' : stops + ' ' + helper.declOfNum(stops, STOPS_PLURALS);
         const departure = helper.ticketDateFormatter(departure_date, departure_time);
         const arrival = helper.ticketDateFormatter(arrival_date, arrival_time);
-
+        
         return (
             <div className="ticket-list-item__rightpart">
                 <div className="ticket-list-item__rightpart__travel">
