@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import RadioGroup from 'app/shared/components/RadioGroup/RadioGroup';
 
 import './Currency.less';
 
-export default class Currency extends Component {
+export default class Currency extends PureComponent {
     render() {
         const { currencyChangeHandler, currency } = this.props;
         return (

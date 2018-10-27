@@ -81,7 +81,7 @@ export default function(WrappedComponent) {
                 const { data } = await api.tickets.getTickets();
                 const tickets = data.sort(helper.comparePrices);
                 this.setState({
-                    tickets
+                    tickets: tickets.map(ticket => {return {...ticket, id: helper.guid() }})
                 });
             } catch (e) {
                 console.error(e);

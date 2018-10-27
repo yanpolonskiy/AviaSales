@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Checkbox from 'app/shared/components/Checkbox/Checkbox';
 
 import './StopsFilter.less';
 
-export default class StopsFilter extends Component {
+export default class StopsFilter extends PureComponent {
     render() {
         const { checkboxHandler, stopsFilter, headCheckboxHandler, hiddenTextHandler } = this.props;
         const options = stopsFilter.filters.map((filter, index) => (

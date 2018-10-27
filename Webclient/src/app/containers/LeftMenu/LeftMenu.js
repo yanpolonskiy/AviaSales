@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Currency from './Currency/Currency';
 import StopsFilter from './StopsFilter/StopsFilter';
 import './LeftMenu.less';
 
-export default class LeftMenu extends Component {
+export default class LeftMenu extends PureComponent {
     render() {
         const {
             checkboxHandler,

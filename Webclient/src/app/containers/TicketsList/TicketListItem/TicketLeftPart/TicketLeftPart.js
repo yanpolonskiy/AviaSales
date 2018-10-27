@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import './TicketLeftPart.less';
 
-export default class TicketLeftPart extends Component {
+export default class TicketLeftPart extends PureComponent {
     render() {
         const { carrier, currency, price } = this.props;
 

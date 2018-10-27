@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './RadioGroup.less';
 
-export default class RadioGroup extends Component {
+export default class RadioGroup extends PureComponent {
     render() {
         const { buttons, name, onChange, defaultChecked } = this.props;
         const className = this.props.className ? ' ' + this.props.className : '';

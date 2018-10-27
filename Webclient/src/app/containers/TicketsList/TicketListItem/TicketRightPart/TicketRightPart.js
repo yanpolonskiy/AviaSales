@@ -4,7 +4,7 @@ import helper from 'app/utils/helper';
 
 import './TicketRightPart.less';
 
-export default class TicketRightPart extends PureComponent {
+export default class TicketRightPart extends PureComponent {    
     render() {        
         const {
             origin,
